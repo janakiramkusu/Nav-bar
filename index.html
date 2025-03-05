@@ -3,101 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Navigation Bar</title>
+    <title>Zoho Styled Website</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
+
+        /* Full-page layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        /* Navbar */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #333;
-            padding: 10px 20px;
-        }
-        .navbar a {
+            background: #d92128; /* Zoho Red */
+            padding: 15px 20px;
             color: white;
-            text-decoration: none;
-            padding: 10px 15px;
         }
-        .navbar a:hover {
-            background-color: #575757;
-            border-radius: 5px;
+
+        .navbar h2 {
+            font-size: 24px;
         }
-        .menu {
-            display: flex;
+
+        .nav-links {
             list-style: none;
-            padding: 0;
+            display: flex;
         }
-        .menu li {
-            position: relative;
+
+        .nav-links li {
+            margin: 0 15px;
         }
-        .dropdown {
-            display: none;
-            position: absolute;
-            background-color: #444;
-            min-width: 150px;
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
         }
-        .dropdown a {
-            display: block;
-            padding: 10px;
+
+        .nav-links a:hover {
+            color: #f1c40f; /* Yellow hover effect */
         }
-        .menu li:hover .dropdown {
-            display: block;
-        }
+
         .menu-toggle {
             display: none;
-            font-size: 24px;
+            font-size: 25px;
             cursor: pointer;
-            color: white;
         }
-        @media (max-width: 768px) {
-            .menu {
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
                 display: none;
                 flex-direction: column;
+                background: #d92128;
+                position: absolute;
+                top: 60px;
+                right: 0;
                 width: 100%;
-                background-color: #333;
-            }
-            .menu a {
-                display: block;
                 text-align: center;
-                padding: 15px;
+                padding: 15px 0;
             }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
             .menu-toggle {
                 display: block;
             }
         }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: #f8f9fa;
+            color: #0b5cab; /* Zoho Blue */
+        }
+
+        .hero h1 {
+            font-size: 36px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Services Section */
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px 20px;
+            background: #ffffff;
+        }
+
+        .service-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            text-align: center;
+            width: 250px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 10px;
+            color: #0b5cab; /* Zoho Blue */
+        }
+
+        /* Footer (Contact Section) */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50; /* Dark Gray */
+            color: white;
+        }
+
+        .footer p {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Navbar -->
     <nav class="navbar">
-        <h2 style="color: white;">My Website</h2>
-        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
-        <ul class="menu" id="menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li>
-                <a href="#services">Services ▼</a>
-                <ul class="dropdown">
-                    <li><a href="#web">Web Development</a></li>
-                    <li><a href="#design">UI/UX Design</a></li>
-                </ul>
-            </li>
-            <li><a href="#contact">Contact</a></li>
+        <h2>Zoho</h2>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
+        <div class="menu-toggle">&#9776;</div>
     </nav>
 
+    <div class="content">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Welcome to Zoho Styled Site</h1>
+            <p>Building user friendly and scalable web solutions.</p>
+        </div>
+
+        <!-- Services Section -->
+        <div class="services">
+            <div class="service-card">
+                <h3>Web Development</h3>
+                <p>We create high quality, responsive websites.</p>
+            </div>
+            <div class="service-card">
+                <h3>SEO Optimization</h3>
+                <p>Boost your online presence with SEO strategies.</p>
+            </div>
+            <div class="service-card">
+                <h3>Custom Solutions</h3>
+                <p>Tailor made solutions for your business needs.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Contact Section) -->
+    <div class="footer">
+        <p>📧 Contact us at: contact@zoho.com</p>
+    </div>
+
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
-        }
+        const toggleBtn = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        toggleBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
     </script>
+
 </body>
 </html>
